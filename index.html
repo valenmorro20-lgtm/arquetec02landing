@@ -124,6 +124,11 @@ nav.scrolled{padding:14px 48px;background:rgba(12,12,11,.88);backdrop-filter:blu
 .pcard-img{width:100%;flex:1;object-fit:cover;display:block;cursor:pointer;transition:transform .6s ease,opacity .25s ease}
 .pcard-img:hover{transform:scale(1.02)}
 .pcard-ctr{position:absolute;top:14px;right:14px;background:rgba(10,10,10,.85);border:1px solid rgba(201,169,110,.5);color:var(--gold);font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;padding:5px 11px;pointer-events:none;z-index:5}
+.pcard-nav{display:flex;background:rgba(10,10,10,.95);border-top:1px solid rgba(201,169,110,.2);flex-shrink:0}
+.pcard-nav button{flex:1;font-size:20px;color:#C9A96E;background:transparent;border:none;border-right:1px solid rgba(201,169,110,.15);padding:14px 8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;-webkit-tap-highlight-color:transparent;min-height:48px}
+.pcard-nav button:last-child{border-right:none}
+.pcard-nav button:active{background:rgba(201,169,110,.2)}
+.pcard-nav .nav-ctr{flex:1.5;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--gold);display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(201,169,110,.15)}
 .pcard-mgmt{display:flex;background:rgba(10,10,10,.92);border-top:1px solid rgba(201,169,110,.2);flex-shrink:0}
 .pmgmt-btn{flex:1;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:transparent;border:none;border-right:1px solid rgba(201,169,110,.15);padding:11px 8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s}
 .pmgmt-btn:last-child{border-right:none}
@@ -441,10 +446,15 @@ body.edit-on [contenteditable]:focus{outline:2px solid #C9A96E;background:rgba(2
     </div>
     <div id="projectsList">
 
-      <div class="pcard" data-pid="0" data-photos='["https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80"]'>
+      <div class="pcard" data-pid="0" data-photos='[&quot;https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80&quot;, &quot;https://images.homify.com/v1439958213/p/photo/image/552335/Dalias-12.jpg&quot;, &quot;https://www.valvo.com.mx/wp-content/uploads/2017/10/cocinas-modernas-min-1.jpg&quot;]'>
         <div class="pcard-photo">
           <img class="pcard-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80" alt="Casa Hormigón" onclick="cycleProj(0)">
-          <div class="pcard-ctr" id="pctr0">1 / 3</div>
+          <div class="pcard-ctr" id="pctr0" style="display:none">1 / 3</div>
+          <div class="pcard-nav">
+            <button onclick="prevProj(0)" style="font-size:22px">&#8249;</button>
+            <span class="nav-ctr" id="nctr0">1 / 3</span>
+            <button onclick="nextProj(0)" style="font-size:22px">&#8250;</button>
+          </div>
           <div class="pcard-mgmt">
             <button class="pmgmt-btn" onclick="replProj(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Reemplazar</button>
             <button class="pmgmt-btn" onclick="addProj(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar foto</button>
@@ -466,10 +476,15 @@ body.edit-on [contenteditable]:focus{outline:2px solid #C9A96E;background:rgba(2
         </div>
       </div>
 
-      <div class="pcard rev" data-pid="1" data-photos='["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1560184897-6a8a8f58bb99?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"]'>
+      <div class="pcard rev" data-pid="1" data-photos='[&quot;https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80&quot;, &quot;https://images.adsttc.com/media/images/65b2/83fb/11de/4801/7c7d/4c6a/slideshow/casa-agua-stemmer-rodrigues-arquitetura_49.jpg?1706198025&quot;, &quot;https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80&quot;, &quot;https://i.pinimg.com/originals/6f/41/7c/6f417c6a59e643525dedd3189270e535.jpg&quot;]'>
         <div class="pcard-photo">
           <img class="pcard-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Vivienda Sustentable" onclick="cycleProj(1)">
-          <div class="pcard-ctr" id="pctr1">1 / 3</div>
+          <div class="pcard-ctr" id="pctr1" style="display:none">1 / 3</div>
+          <div class="pcard-nav">
+            <button onclick="prevProj(1)" style="font-size:22px">&#8249;</button>
+            <span class="nav-ctr" id="nctr1">1 / 3</span>
+            <button onclick="nextProj(1)" style="font-size:22px">&#8250;</button>
+          </div>
           <div class="pcard-mgmt">
             <button class="pmgmt-btn" onclick="replProj(1)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Reemplazar</button>
             <button class="pmgmt-btn" onclick="addProj(1)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar foto</button>
@@ -491,10 +506,15 @@ body.edit-on [contenteditable]:focus{outline:2px solid #C9A96E;background:rgba(2
         </div>
       </div>
 
-      <div class="pcard" data-pid="2" data-photos='["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80"]'>
+      <div class="pcard" data-pid="2" data-photos='[&quot;https://img.freepik.com/fotos-premium/casa-moderna-bosque_658005-2740.jpg&quot;, &quot;https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80&quot;, &quot;https://i.pinimg.com/originals/4e/7f/e7/4e7fe7ec92a4ccf32eb46609691e47d6.jpg&quot;, &quot;https://vimapstudio.com/wp-content/uploads/2023/06/Luz_Sombra_Dormitorio_-scaled.jpg&quot;]'>
         <div class="pcard-photo">
           <img class="pcard-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Casa en Bosque" onclick="cycleProj(2)">
-          <div class="pcard-ctr" id="pctr2">1 / 3</div>
+          <div class="pcard-ctr" id="pctr2" style="display:none">1 / 3</div>
+          <div class="pcard-nav">
+            <button onclick="prevProj(2)" style="font-size:22px">&#8249;</button>
+            <span class="nav-ctr" id="nctr2">1 / 3</span>
+            <button onclick="nextProj(2)" style="font-size:22px">&#8250;</button>
+          </div>
           <div class="pcard-mgmt">
             <button class="pmgmt-btn" onclick="replProj(2)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Reemplazar</button>
             <button class="pmgmt-btn" onclick="addProj(2)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar foto</button>
@@ -516,10 +536,15 @@ body.edit-on [contenteditable]:focus{outline:2px solid #C9A96E;background:rgba(2
         </div>
       </div>
 
-      <div class="pcard rev" data-pid="3" data-photos='["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80"]'>
+      <div class="pcard rev" data-pid="3" data-photos='[&quot;https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80&quot;, &quot;https://images.homify.com/v1443543527/p/photo/image/953258/19.jpg&quot;, &quot;https://linea3cocinas.com/wp-content/uploads/2023/03/luz-en-la-cocina-1280x720.jpeg&quot;]'>
         <div class="pcard-photo">
           <img class="pcard-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80" alt="Proyecto Urbano" onclick="cycleProj(3)">
-          <div class="pcard-ctr" id="pctr3">1 / 3</div>
+          <div class="pcard-ctr" id="pctr3" style="display:none">1 / 3</div>
+          <div class="pcard-nav">
+            <button onclick="prevProj(3)" style="font-size:22px">&#8249;</button>
+            <span class="nav-ctr" id="nctr3">1 / 3</span>
+            <button onclick="nextProj(3)" style="font-size:22px">&#8250;</button>
+          </div>
           <div class="pcard-mgmt">
             <button class="pmgmt-btn" onclick="replProj(3)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Reemplazar</button>
             <button class="pmgmt-btn" onclick="addProj(3)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Agregar foto</button>
@@ -838,7 +863,23 @@ function showPhoto(pid, idx){
   if(ctr) ctr.textContent = (idx+1) + ' / ' + photos.length;
 }
 function cycleProj(pid){ showPhoto(pid, (projIdx[pid]||0)+1); }
+function nextProj(pid){ showPhoto(pid, (projIdx[pid]||0)+1); }
+function prevProj(pid){ showPhoto(pid, (projIdx[pid]||0)-1); }
 
+
+(function(){
+  var sx=0,sy=0;
+  document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)<40||Math.abs(dy)>Math.abs(dx))return;
+    var card=e.target.closest('[data-pid]');
+    if(!card)return;
+    var pid=parseInt(card.getAttribute('data-pid'));
+    if(isNaN(pid))return;
+    if(dx<0)nextProj(pid);else prevProj(pid);
+  },{passive:true});
+})();
 function replProj(pid){
   var photos = getPhotos(pid), cur = projIdx[pid]||0;
   openPhotoModal({type:'proj', pid:pid, idx:cur}, photos[cur], 'Reemplazar foto del proyecto');
